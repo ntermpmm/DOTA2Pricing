@@ -1,0 +1,264 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap");
+
+html {
+    font-size: calc(60% + 0.8vmin);
+    scroll-behavior: smooth;
+    margin: 0;
+    box-sizing: border-box;
+    color: #0f0a34;
+    overflow-x: hidden;
+    /* scroll-snap-type: y mandatory; */
+    /* background-color: #151929; */
+    /* background-color: #212534; */
+    /* background: -webkit-linear-gradient(145deg, #212534, #151929); */
+}
+
+body {
+    /* background: #212534; */
+    margin: 0;
+    scroll-snap-type: y mandatory;
+    font-family: "Poppins";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Poppins", monospace;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    h1 {
+        @apply font-semibold text-5xl;
+    }
+
+    h2 {
+        @apply text-4xl font-semibold;
+    }
+
+    h3 {
+        @apply text-3xl font-semibold;
+    }
+
+    h4 {
+        @apply text-2xl font-medium;
+    }
+
+    h5 {
+        @apply text-lg font-medium;
+    }
+
+    h6 {
+        @apply text-x;
+    }
+
+    p {
+        @apply text-base;
+    }
+}
+
+.textWater {
+    /* color: #fff; */
+    /* font-size: 8em; */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* transform: translate(-50%, -50%); */
+}
+.textWater div:nth-child(1) {
+    color: transparent;
+    /* -webkit-text-stroke: 2px rgb(255, 174, 241); */
+    background: -webkit-linear-gradient(145deg, #c1b, rgb(5, 175, 149));
+    background-clip: text;
+    -webkit-text-stroke: 4px transparent;
+    color: #2d1c49;
+}
+.textWater div:nth-child(2) {
+    /* color: #4400b900; */
+
+    -webkit-text-fill-color: transparent;
+    background: -webkit-linear-gradient(145deg, #c1b, rgb(5, 175, 149));
+    background-clip: text;
+    animation: animate 4s ease-in-out infinite;
+}
+
+.textWater .water:nth-child(1) {
+    color: transparent;
+    /* -webkit-text-stroke: 2px rgb(255, 174, 241); */
+    background: -webkit-linear-gradient(145deg, #10395d, #b7d0e8);
+    background-clip: text;
+    -webkit-text-stroke: 4px transparent;
+    color: #769faa;
+}
+.textWater .water:nth-child(2) {
+    /* color: #4400b900; */
+
+    -webkit-text-fill-color: transparent;
+    background: -webkit-linear-gradient(
+        145deg,
+        rgb(67, 17, 204),
+        rgb(5, 175, 149)
+    );
+    background-clip: text;
+    animation: animate 4s ease-in-out infinite;
+}
+
+.textWater .TRM:nth-child(1) {
+    color: transparent;
+    /* -webkit-text-stroke: 2px rgb(255, 174, 241); */
+    background: -webkit-linear-gradient(145deg, #c9af7f, #e8d7b7);
+    background-clip: text;
+    -webkit-text-stroke: 4px transparent;
+    color: #aa9876;
+}
+.textWater .TRM:nth-child(2) {
+    /* color: #4400b900; */
+
+    -webkit-text-fill-color: transparent;
+    background: -webkit-linear-gradient(145deg, #caad79, #f3e5cb);
+    background-clip: text;
+    animation: animate 4s ease-in-out infinite;
+}
+
+.textDev {
+    background: -webkit-linear-gradient(30deg, rgb(255, 17, 192), #a0f);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.textTRM {
+    background: -webkit-linear-gradient(30deg, #a2f, #81f);
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.textSocket {
+    background: -webkit-linear-gradient(
+        135deg,
+        hsl(204, 100%, 50%),
+        hsl(196, 100%, 50%)
+    );
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.profilePic {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+
+    /* border: 2px solid #fff; */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes animate {
+    0%,
+    100% {
+        clip-path: polygon(
+            0% 45%,
+            16% 44%,
+            33% 50%,
+            54% 60%,
+            70% 61%,
+            84% 59%,
+            100% 52%,
+            100% 100%,
+            0% 100%
+        );
+    }
+
+    50% {
+        clip-path: polygon(
+            0% 60%,
+            15% 65%,
+            34% 66%,
+            51% 62%,
+            67% 50%,
+            84% 45%,
+            100% 46%,
+            100% 100%,
+            0% 100%
+        );
+    }
+}
+
+.containerr {
+    /* width: 100%; */
+    /* height: 100vh; */
+    scroll-snap-type: y mandatory;
+}
+.containerrx {
+    width: 100vw;
+    height: 100vh;
+    scroll-snap-type: y proximity;
+    /* overflow-y: scroll; */
+    /* overflow-x: scroll; */
+}
+
+.child {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    scroll-snap-align: start;
+    /* transition: all 1.5s; */
+}
+.containerr .child2 {
+    /* width: 200vw; */
+    /* height: 100vh; */
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.containerrx .childx {
+    width: 100vw;
+    height: 100vh;
+    scroll-snap-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.containerr .child:nth-of-type(even) {
+    /* background-color: rgb(72, 186, 231);
+    color: wheat; */
+}
+
+::-webkit-scrollbar {
+    display: none;
+    width: 6px;
+}
+
+/* track */
+::-webkit-scrollbar-track {
+    /* display: none; */
+    background-color: #f4f3fe;
+    /* display: none; */
+}
+
+/* Handler */
+::-webkit-scrollbar-thumb {
+    background-color: #6a5be1;
+    /* display: none; */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background-color: rgb(29, 21, 59);
+}
+
+.glass {
+    background: rgba(245, 198, 179, 0.36);
+    border-radius: 16px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(16.7px);
+    -webkit-backdrop-filter: blur(16.7px);
+}
+
+.shadoww {
+    filter: blur(5px);
+}
