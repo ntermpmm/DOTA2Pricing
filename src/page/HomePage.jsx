@@ -2,15 +2,18 @@ import React, { useState } from "react";
 import NavHome from "../components/navbar/NavHome";
 import Footer from "../components/footer/Footer";
 import axios from "axios";
+import { loadingSvg } from "../svg/loading";
 
 function FirstPage() {
     const [price, setPrice] = useState(2.07);
     const [priceTotal, setPriceTotal] = useState(2.07);
     const [search, setSearch] = useState("");
-    const [name, setName] = useState("");
+    const [name, setName] = useState("Please fill the search bar");
     const [success, setSuccess] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     const getPrice = async (search) => {
+        setLoading(true);
         try {
             const res = await axios.post(
                 process.env.REACT_APP_API + "/contents/price",
@@ -25,9 +28,11 @@ function FirstPage() {
             );
             setName(res.data.market_hash_name);
             setSuccess(true);
-            console.log(res);
+            setLoading(false);
         } catch (error) {
             setSuccess(false);
+            setLoading(false);
+            setName("Item not found");
         }
     };
 
@@ -45,8 +50,9 @@ function FirstPage() {
                 >
                     <NavHome />
                     <div className="flex flex-col justify-center items-center pb-[50%] pt-20 gap-12">
-                        <div className="flex gap-2">
+                        <div className="flex gap-2 flex-col">
                             <input
+                                disabled={loading}
                                 type="text"
                                 className="border rounded-md px-2"
                                 onChange={(e) => setSearch(e.target.value)}
@@ -57,9 +63,9 @@ function FirstPage() {
                                 }}
                             />
                             <button
-                                className={`border rounded-md px-2 disabled:opacity-50 disabled:cursor-not-allowed`}
-                                disabled={!search}
-                                onClick={(e) => {
+                                className={`border rounded-md disabled:opacity-50 disabled:bg-slate-300 disabled:cursor-not-allowed p-2 bg-blue-500 active:bg-blue-700 duration-300 hover:text-white text-white`}
+                                disabled={!search || loading}
+                                onClick={() => {
                                     handleGetPrice();
                                 }}
                                 onKeyPress={(e) => {
@@ -71,15 +77,26 @@ function FirstPage() {
                                 Search
                             </button>
                         </div>
-                        {success ? (
-                            <>
-                                <h1>{name}</h1>
-                                <div>Price: ${price}</div>
-                                <div>Price Total: ${priceTotal.toFixed(2)}</div>
-                            </>
-                        ) : (
-                            <h1>Not found...</h1>
-                        )}
+                        <div className="px-2 text-center">
+                            {!loading ? (
+                                <>
+                                    {success ? (
+                                        <div className="flex flex-col gap-2">
+                                            <h2>{name}</h2>
+                                            <p>Price: ฿{price}</p>
+                                            <p>
+                                                Price Total: ฿
+                                                {priceTotal.toFixed(2)}
+                                            </p>
+                                        </div>
+                                    ) : (
+                                        <h4>{name}</h4>
+                                    )}
+                                </>
+                            ) : (
+                                loadingSvg
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
