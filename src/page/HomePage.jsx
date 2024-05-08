@@ -13,7 +13,7 @@ function FirstPage() {
     const getPrice = async (search) => {
         try {
             const res = await axios.post(
-                "http://127.0.0.1:8006/contents/price",
+                process.env.REACT_APP_API + "/contents/price",
                 {
                     name: search ? search : "Dragonclaw Hook",
                 }
